@@ -19,20 +19,29 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-    data() {
-        return  {
-            dataCurrentNews: {}
-        }
-    },
-    mounted() {
-        this.getDataCurrentNews()
-    },
-    methods: {
-        getDataCurrentNews() {
-            this.dataCurrentNews = JSON.parse(localStorage.getItem('CurrentNews'))
-        }
+  data() {
+    return  {
+      dataCurrentNews: {},
+      idNews: 0
     }
+  },
+  mounted() {
+    this.idNews = this.$route.query.id
+    this.getDataCurrentNews()
+  },
+  methods: {
+    getDataCurrentNews() {
+      axios.get(`https://beritaku-api.herokuapp.com/articles/${this.idNews}`)
+      .then(res => {
+        this.dataCurrentNews = res.data
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
+  }
 }
 </script>
 

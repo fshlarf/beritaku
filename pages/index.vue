@@ -31,10 +31,11 @@ export default {
   },
   methods : {
     getDataNews() {
-      axios.get('https://newsapi.org/v2/top-headlines?country=id&category=technology&apiKey=a050e54685b44bf89ec55dbb472ee1d2')
+      axios.get('https://beritaku-api.herokuapp.com/articles')
       .then(res => {
-        this.allPost = res.data.articles
-        res.data.articles.map((item, key) => {
+        console.log(res);
+        this.allPost = res.data
+        res.data.map((item, key) => {
           if (item.description !== null && this.posts.length < 9) {
             this.posts.push(item)
           }
@@ -50,8 +51,7 @@ export default {
       this.allPost.map((item, key) => item.description !== null && this.posts.length < this.current ? this.posts.push(item) : '')
     },
     openDetail(item) {
-      localStorage.setItem('CurrentNews', JSON.stringify(item))
-      this.$router.push('/detail')
+      this.$router.push(`/detail?id=${item.id}`)
     }
   }  
 }
