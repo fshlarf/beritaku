@@ -1,0 +1,20 @@
+{
+  "name": "beritaku",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.12.0",
+    "node-sass": "^4.14.1",
+    "nuxt": "^2.14.0",
+    "push-dir": "^0.4.1",
+    "sass-loader": "^10.0.4"
+  },
+  "devDependencies": {}
+}
