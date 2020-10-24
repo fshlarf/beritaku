@@ -54,6 +54,7 @@ export default {
   */
   buildModules: [
   ],
+  router: { base: '/beritaku/' },
   /*
   ** Nuxt.js modules
   */
